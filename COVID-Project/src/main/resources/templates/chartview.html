@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bar Chart Example</title>
+    <!-- Add Chart.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style the x-axis title and add margin */
+        .x-axis-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Total Deaths by Country</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Create a canvas element for the chart -->
+                        <canvas id="barChartCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        // Your JavaScript code for Chart.js
+        var jsonDataUrl = /*[[${myurl}]]*/ '';
+        var jsonData;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', jsonDataUrl, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                jsonData = JSON.parse(xhr.responseText);
+
+                var stateNames = jsonData.map(function(location) {
+                    return location.country;
+                });
+
+                var totalDeaths = jsonData.map(function(location) {
+                    // Convert the total deaths to lakhs (divide by 100,000)
+                    return location.latestTotalDeaths / 100000;
+                });
+
+                // Create a Chart.js bar chart
+                var ctx = document.getElementById('barChartCanvas').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: stateNames,
+                        datasets: [{
+                            label: 'Total Deaths (in lakhs)',
+                            data: totalDeaths,
+                            backgroundColor: 'indigo', // Set the bar color to blue
+                            borderWidth: 0,
+                            barThickness: 5, // Increase the width of the bars
+                            opacity: 0.4 // Set the opacity (0.0 to 1.0)
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Total Deaths (in lakhs)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Country'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
