@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Include your CSS and other head elements here -->
+</head>
+<body>
+    <form th:action="@{/saveBooking}" method="get">
+        <div class="seat-row">
+            <input type="checkbox" th:name="selectedSeats" th:value="A1" th:id="seat1" class="seat-checkbox">
+            <label th:for="seat1" class="seat-label">A1</label>
+            
+            <input type="checkbox" th:name="selectedSeats" th:value="A2" th:id="seat2" class="seat-checkbox">
+            <label th:for="seat2" class="seat-label">A2</label>
+
+            <!-- Repeat the pattern for other seats -->
+        </div>
+        
+
+        <div class="seat-row">
+            <input type="checkbox" th:name="selectedSeats" th:value="B1" th:id="seat3" class="seat-checkbox">
+            <label th:for="seat3" class="seat-label">B1</label>
+            
+            <input type="checkbox" th:name="selectedSeats" th:value="B2" th:id="seat4" class="seat-checkbox">
+            <label th:for="seat4" class="seat-label">B2</label>
+
+            <!-- Repeat the pattern for other seats -->
+        </div>
+
+        <!-- Add more seat rows as needed -->
+       <h2>Booking Summary</h2>
+                <div class="total-price">
+        			Total Price: Rs. <span id="prices">0</span>
+        			<input type="hidden" th:name="price" id="hidden-price" >
+    			</div>
+        <button type="submit">Submit</button>
+    </form>
+    
+<script>
+    const seatCheckboxes = document.querySelectorAll(".seat-checkbox");
+    const priceElement = document.getElementById("prices");
+    const hiddenPriceElement = document.getElementById("hidden-price");
+
+    // Initialize the total price
+    let totalPrice = 0;
+
+    // Update the total price when checkboxes are checked/unchecked
+    seatCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", function () {
+            if (checkbox.checked) {
+                // Add 200 to the total price when a checkbox is checked
+                totalPrice += 200;
+            } else {
+                // Subtract 200 when a checkbox is unchecked
+                totalPrice -= 200;
+            }
+
+            // Update the price display and hidden input value
+            priceElement.textContent = totalPrice;
+            hiddenPriceElement.value = totalPrice;
+        });
+    });
+</script>
+
+</body>
+</html>

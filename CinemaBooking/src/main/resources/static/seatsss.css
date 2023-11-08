@@ -1,0 +1,50 @@
+
+
+.theater-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for the theater screen */
+.theater-screen {
+    width: 90%; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    background-color: #333; /* Screen color */
+    color: #fff; /* Text color on the screen */
+    text-align: center;
+    border-radius: 30px  30px 2px 2px;
+    font-size: 18px; /* Text size on the screen */
+    margin: 20px 0; /* Adjust margin as needed */
+}
+
+
+
+
+
+.seat-row {
+    display: flex;
+    /* flex-wrap: wrap; */
+     justify-content:center;
+     align-items: center;
+
+    gap: 10px;
+  }
+  
+  .seat-label {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    font-size: 12px;
+  }
+  
+  .checkbox {
+    display: none; /* Hide the actual checkbox */
+  }
+  
+  .seat-image {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,31 @@
+.section {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* Additional styling */
+}
+
+ .movie-card:active {
+    background-color: lightblue; /* Change the background color to light blue */
+    /* border: 2px solid blue; Add a blue border */
+    /* color: blue; Change the text color to blue */
+ }
+ .movie-card.selected {
+    
+    border: 2px solid #007bffa2;
+    border-radius: 5px;
+    outline: none;
+}
+
+.movie-card:hover {
+    transform: scale(1.1); /* Scale the div by 10% when hovering */
+    transition: transform 0.3s; /* Add a smooth transition effect */
+    cursor: pointer;
+}
+.zoom {
+    transition: transform 0.2s;
+}
+
+.zoom:hover {
+    transform: scale(1.8);
+}

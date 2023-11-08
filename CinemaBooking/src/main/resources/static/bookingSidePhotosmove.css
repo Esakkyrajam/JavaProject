@@ -1,0 +1,30 @@
+/* styles.css */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 50px auto;
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 1s ease;
+}
+.poster{
+	border-radius: 10px;
+}
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}

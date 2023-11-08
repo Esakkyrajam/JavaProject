@@ -1,0 +1,73 @@
+
+/* Styling for checkboxes and labels */
+.seat-checkbox {
+    display: none; /* Hide the actual checkboxes */
+}
+
+.seat-label {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+/* Styling for checked checkboxes and displaying chair images */
+.seat-checkbox:checked + .seat-label {
+    background-color: #007BFF;
+    color: #fff;
+    border: 2px solid #007BFF;
+}
+
+.seat-checkbox:checked + .seat-label::before {
+    content: url('chair.png'); /* Replace 'chair.png' with your chair image path */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Add styling for the seat rows */
+.seat-rows {
+    display: flex;
+    flex-direction: column; /* Display rows vertically */
+}
+
+/* Styling for individual seat rows */
+.seat-row {
+    display: flex;
+    justify-content: space-around; /* Space checkboxes evenly */
+    align-items: center;
+    margin: 10px 0; /* Adjust spacing between rows as needed */
+}
+
+/* Rest of your CSS styles for checkboxes and labels */
+
+/* Styling for the theater layout */
+.theater-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for the theater screen */
+.theater-screen {
+    width: 90%; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    background-color: #333; /* Screen color */
+    color: #fff; /* Text color on the screen */
+    text-align: center;
+    border-radius: 30px  30px 2px 2px;
+    font-size: 18px; /* Text size on the screen */
+    margin: 20px 0; /* Adjust margin as needed */
+}
+
+/* Rest of your CSS styles for checkboxes and labels */
+

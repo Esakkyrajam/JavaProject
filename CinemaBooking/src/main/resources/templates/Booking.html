@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Default Title</title>
+    <link th:href="@{/section.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/seatsss.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/BookingStyle.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/bookingSidePhotosmove.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Movie Booking</a>
+        </nav>
+    </header>
+    
+    <!-- Movie Listing Section -->
+    <section class="movie-list-section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Now Showing</h2>
+                    <form th:action="@{/saveBooking}" method="get">
+                        <input type="hidden" name="movieTitle" id="selectedMovieTitle" value="">
+
+                        <div class="movie-list-row">
+                            <div class="movie-card"   onclick="selectMovie(this)">
+                                <img src="movie1.jpg" alt="Movie 1" width="100" height="150" class="zoom">
+                                <h2 class="movie-title" text="Leo">Leo</h2>
+                                <p class="movie-description" text="moviedescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                              
+                            </div>
+                             <div class="movie-card"  onclick="selectMovie(this)">
+                                <img src="movie2.jpg" alt="Movie 2" width="100" height="150" class="zoom">
+                                <h2 class="movie-title" text="Jailer">Jailer</h2>
+                                <p class="movie-description" text="moviedescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                
+                            </div>
+                             <div class="movie-card"  onclick="selectMovie(this)">
+                                <img src="movie3.jpg" alt="Movie 3" width="100" height="150" class="zoom">
+                                <h2 class="movie-title" text="Vida Muyarchi">Vida Muyarchi</h2>
+                                <p class="movie-description" text="moviedescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                              
+                            </div>
+                         
+                        </div>
+        
+                   <!-- here-form end tag-->
+                </div>
+                <div class="col-md-4">
+                    <div class="sidebar">
+                        <h2>Book Tickets</h2>
+                        <!--here starting form tad-->
+                            <div class="form-group">
+                                <label for="bookingDate">Select a Date:</label>
+                                <input type="date" id="bookingDate" name="bookingDate" class="form-control" required>
+                         </div>
+                            <div class="form-group">
+                                <label for="showtime">Select Showtime</label>
+                                <select class="form-control" id="showtime" name="showtime" required>
+                                 <option value="9:00 AM">9:00 AM</option>
+                                    <option value="12:00 AM">12:00 AM</option>
+                                    <option value="03:00 PM">03:00 PM</option>
+                                    <option value="06:00 PM">06:00 PM</option>
+                                    <option value="09:00 PM">09:00 PM</option>
+                                </select>
+                            </div>
+                            <!--<button type="submit" class="btn btn-primary">Book Now</button>-->
+                        
+    
+                            <!-- Display error message in an alert -->
+                    <!--	<div id="errorMessage" th:if="${errorMessage}" th:text="${errorMessage}" style="display: none"></div>-->
+    
+    
+    
+    
+                      <div class="carousel-container">
+                        <div class="carousel">
+                            <div class="carousel-slide">
+                                <img src="movie1.jpg" alt="Image 1" width="100" height="150" class="poster">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="movie2.jpg" alt="Image 2" width="100" height="150" class="poster">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="movie3.jpg" alt="Image 3" width="100" height="150" class="poster">
+                            </div>
+                        </div>
+                    </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal background overlay -->
+    <div id="modal-overlay" class="modal-overlay" th:if="${errorMessage}"></div>
+    <!-- Modal content -->
+    <div id="modal-content" class="modal-content" th:if="${errorMessage}">
+        <p id="errorMessageDisplay" th:if="${errorMessage}" th:text="${errorMessage} "></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+    
+   
+    <!-- Seat Selection Section -->
+    <section class="seat-selection-section bg-light py-5" id="2">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- Theater layout with seats -->
+                        <h2>Select Your Seats</h2>
+                            <!-- Modify the seat elements to use checkboxes -->
+                     
+                        <div class="theater-layout-M">
+                            <div class="cinema-seats">
+                            <div class="seat-row">
+                                <label for="seat1" class="seat-label">
+                                  <input type="checkbox"  class="checkbox" name="selectedSeats" id="seat1" value="A1">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seat2" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seat2" value="A2">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seat3" class= "seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seat3" value="A3">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seat4" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seat4" value="A4">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seat5" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seat5" value="A5">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                                
+                             
+                                    <label for="seat6" class="seat-label">
+                                      <input type="checkbox"  class="checkbox" name="selectedSeats" id="seat6" value="A6">
+                                    <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                    </label>
+                                  
+                                 <label for="seat7" class="seat-label">
+                                      <input type="checkbox" class="checkbox" name="selectedSeats" id="seat7" value="A7">
+                                    <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                    </label>
+                                  
+                                 <label for="seat8" class="seat-label">
+                                      <input type="checkbox" class="checkbox" name="selectedSeats" id="seat8" value="A8">
+                                    <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                    </label>
+                                  
+                                 <label for="seat9" class="seat-label">
+                                      <input type="checkbox" class="checkbox" name="selectedSeats" id="seat9" value="A9">
+                                    <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                    </label>
+                                  
+                                 <label for="seat10" class="seat-label">
+                                      <input type="checkbox" class="checkbox" name="selectedSeats" id="seat10" value="A10">
+                                    <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                    </label>
+                                    
+                                 <label for="seat11" class="seat-label">
+                                        <input type="checkbox" class="checkbox" name="selectedSeats" id="seat11" value="A11">
+                                      <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                      </label>
+                                    
+                                   <label for="seat12" class= "seat-label">
+                                        <input type="checkbox" class="checkbox" name="selectedSeats" id="seat12" value="A12">
+                                      <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                      </label>
+                                    
+                                   <label for="seat13" class="seat-label">
+                                        <input type="checkbox" class="checkbox" name="selectedSeats" id="seat13" value="A13">
+                                      <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                      </label>
+                                    
+                                   <label for="seat14" class="seat-label">
+                                        <input type="checkbox" class="checkbox" name="selectedSeats" id="seat14" value="A14">
+                                      <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                      </label>
+                                    
+                                   <label for="seat15" class="seat-label">
+                                        <input type="checkbox" class="checkbox" name="selectedSeats" id="seat15" value="A15">
+                                      <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                      </label>
+                                    
+                                   <label for="seat16" class="seat-label">
+                                        <input type="checkbox" class="checkbox" name="selectedSeats" id="seat16" value="A16">
+                                      <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                      </label>
+                                  
+                             <!-- Repeat the above structure for seats A6 to A10 -->
+                              </div>
+                    
+                              <div class="seat-row">
+                                <label for="seatB1" class="seat-label">
+                                  <input type="checkbox"  class="checkbox" name="selectedSeats" id="seatB1" value="B1">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB2" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB2" value="B2">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB3" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB3" value="B3">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB4" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB4" value="B4">
+                                <img class= "seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB5" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB5" value="B5">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB6" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB6" value="B6">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB7" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB7" value="B7">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB8" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB8" value="B8">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB9" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB9" value="B9">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <!-- <label for="seatB10" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB10" value="B10">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                                
+                             <label for="seatB11" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB11" value="B11">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB12" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB12" value="B12">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB13" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB13" value="B13">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB14" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB14" value="B14">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB15" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB15" value="B15">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatB16" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatB16" value="B16">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              </div>
+                           
+                    
+                              <div class="seat-row">
+                                <label for="seatC1" class="seat-label">
+                                  <input type="checkbox"  class="checkbox" name="selectedSeats" id="seatC1" value="C1">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC2" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC2" value="C2">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC3" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC3" value="C3">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC4" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC4" value="C4">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <!-- <label for="seatC5" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC5" value="C5">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              
+                             <!-- <label for="seatC6" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC6" value="C6">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              
+                             <label for="seatC7" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC7" value="C7">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for ="seatC8" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC8" value="C8">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC9" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC9" value="C9">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC10" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC10" value="C10">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC11" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC11" value="C11">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC12" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC12" value="C12">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC13" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC13" value="C13">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC14" class="seat-label">
+                                  <input type="checkbox" class ="checkbox" name="selectedSeats" id="seatC14" value="C14">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC15" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatC15" value="C15">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatC16" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats"  id="seatC16" value="C16">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              </div>
+                           
+                    
+                              <div class="seat-row">
+                                <div class="split">
+                                <label for="seatD1" class="seat-label">
+                                  <input type="checkbox"  class="checkbox" name="selectedSeats" id="seatD1" value="D1">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD2" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD2" value="D2">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD3" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD3" value="D3">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD4" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD4" value="D4">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD5" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD5" value="D5">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD6" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD6" value="D6">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD7" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD7" value="D7">
+                                <img class ="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                            </div>
+                             <label for="seatD8" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD8" value="D8">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <!-- <label for="seatD9" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD9" value="D9">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              <div class="split2">
+                             <label for="seatD10" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD10" value="D10">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD11" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD11" value="D11">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD12" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD12" value="D12">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD13" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD13" value="D13">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD14" class="seat-label">
+                                  <input type="checkbox" class ="checkbox" name="selectedSeats" id="seatD14" value="D14">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD15" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD15" value="D15">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatD16" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatD16" value="D16">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                            </div>               <!--  split over here -->
+                              </div>
+                              
+                              <div class="seat-row">
+                                <label for="seatE1" class="seat-label">
+                                  <input type="checkbox"  class="checkbox" name="selectedSeats" id="seatE1" value="E1">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE2" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE2" value="E2">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE3" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE3" value="E3">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <!-- <label for="seatE4" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE4" value="E4">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              
+                             <!-- <label for="seatE5" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE5" value="E5">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE6" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE6" value="E6">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              
+                             <label for="seatE7" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE7" value="E7">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE8" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE8" value="E8">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE9" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE9" value="E9">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE10" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE10" value="E10">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE11" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE11" value="E11">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE12" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE12" value="E12">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE13" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE13" value="E13">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE14" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE14" value="E14">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE15" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE15" value="E15">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatE16" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatE16" value="E16">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              </div>
+                           
+                              <div class="seat-row">
+                                <label for="seatF1" class="seat-label">
+                                  <input type="checkbox"  class="checkbox" name="selectedSeats" id="seatF1" value="F1">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF2" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF2" value="F2">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF3" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF3" value="F3">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF4" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF4" value="F4">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF5" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF5" value="F5">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <!-- <label for="seatF6" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF6" value="F6">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              
+                             <label for="seatF7" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF7" value="F7">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF8" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF8" value="F8">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF9" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF9" value="F9">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF10" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF10" value="F10">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF11" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF11" value="F11">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <!-- <label for="seatF12" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF12" value="F12">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              
+                             <!-- <label for="seatF13" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF13" value="F13">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF14" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF14" value="F14">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label> -->
+                              
+                             <label for="seatF15" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF15" value="F15">
+                                <img class ="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              
+                             <label for="seatF16" class="seat-label">
+                                  <input type="checkbox" class="checkbox" name="selectedSeats" id="seatF16" value="F16">
+                                <img class="seat-image" src="unchecked-chair.png" alt="Seat">
+                                </label>
+                              </div>
+                 
+                             </div>   
+      
+                            <div class="theater-layout">
+                                <div class="theater-screen">Screen</div> <!-- Add a div for the screen -->
+                            </div>
+    
+    
+                        </div>
+    
+    
+                </div>
+                <div class="col-md-4">
+                    <!-- Booking summary and payment form (simplified) -->
+                   
+                   <h2>Booking Summary</h2>
+                    <div class="total-price">
+                        Total Price: Rs. <span id="price">0</span>
+                        <input type="hidden" name="price" id="hidden-price" value="0">
+                    </div>
+                  <!--  <h2>Payment Details</h2>-->
+                    
+                  <!-- <div class="form-group">
+                                <label for="card-number">Card Number</label>
+                            <input type="text" class="f rm-control" id="card-number" name="card-number">
+                     </div>-->
+                        <button type="submit" class="btn btn-primary">Pay Now</button>
+                    </form>
+                </div>
+            </div>
+    
+    
+        </div>
+    
+    </section>
+
+    <!-- JavaScript and other scripts (if needed) -->
+        
+<script>
+
+
+        
+const checkboxes = document.querySelectorAll(".checkbox");
+
+checkboxes.forEach(function (checkbox) {
+    checkbox.addEventListener("change", function () {
+        const seatImage = checkbox.nextElementSibling;
+        if (checkbox.checked) {
+            // Change the image source when checked
+            seatImage.src = "checked-chair.png";
+        } else {
+            // Change it back to the default image when unchecked
+            seatImage.src = "unchecked-chair.png";
+        }
+    });
+});
+
+
+    const seatCheckboxes = document.querySelectorAll(".checkbox");
+    const priceElement = document.getElementById("price");
+    const hiddenPriceElement = document.getElementById("hidden-price");
+
+    // Initialize the total price
+    let totalPrice = 0;
+
+    // Update the total price when checkboxes are checked/unchecked
+    seatCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", function () {
+            if (checkbox.checked) {
+                // Add 200 to the total price when a checkbox is checked
+                totalPrice += 200;
+            } else {
+                // Subtract 200 when a checkbox is unchecked
+                totalPrice -= 200;
+            }
+
+            // Update the price display and hidden input value
+            priceElement.textContent = totalPrice;
+            hiddenPriceElement.value = totalPrice;
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+if (errorMessage) {
+    // Remove this line, as you don't need to redefine errorMessage
+    // let errorMessage = document.getElementById("errorMessageDisplay").textContent;
+
+    // Assuming "errorMessage" is already a valid error message
+    openModal(errorMessage);
+}
+
+function openModal(message) {
+    let modalOverlay = document.getElementById("modal-overlay");
+    let modalContent = document.getElementById("modal-content");
+    let errorMessageDisplay = document.getElementById("errorMessageDisplay");
+    errorMessageDisplay.textContent = message;
+    modalOverlay.style.display = "block";
+    modalContent.style.display = "block"; // Remove the space before "display"
+}
+
+function closeModal() {
+    let modalOverlay = document.getElementById("modal-overlay");
+    let modalContent = document.getElementById("modal-content");
+    modalOverlay.style.display = "none";
+    modalContent.style.display = "none";
+}
+
+ 
+
+
+ 
+    
+function selectMovie(movieCard) {
+    // Remove "selected" class from all movie cards
+    const movieCards = document.querySelectorAll('.movie-card');
+    movieCards.forEach((card) => card.classList.remove('selected'));
+
+    // Add "selected" class to the clicked movie card
+    movieCard.classList.add('selected');
+
+    // Get the movie title from the selected card
+    const movieTitle = movieCard.querySelector('.movie-title').textContent;
+
+    // Set the movie-title input value
+    const movieTitleInput = document.getElementById('selectedMovieTitle');
+    movieTitleInput.value = movieTitle;
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}">
+    <!-- Link to custom CSS for seat selection -->
+    <link rel="stylesheet" th:href="@{styles5.css}">
+    
+
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Movie Booking</a>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Theater layout with seats -->
+                	<h2>Select Your Seats</h2>
+                    	<!-- Modify the seat elements to use checkboxes -->
+                 <form th:action="@{/view-seats}" method="get">
+                    <div class="theater-layout-M">
+                        <div class="seat-row">
+                            
+  <input type="checkbox" id="seat1" name="selectedSeats" value="A1" class="seat-checkbox">
+  <label for="seat1" class="seat-label">A1</label>                              
+                            
+        <!-- Checkbox for seat A2 -->
+<input type="checkbox" id="seat2" name="selectedSeats" value="A2" class="seat-checkbox">
+<label for="seat2" class="seat-label">A2</label>
+
+<!-- Checkbox for seat A3 -->
+<input type="checkbox" id="seat3" name="selectedSeats" value="A3" class="seat-checkbox">
+<label for="seat3" class="seat-label">A3</label>
+
+<!-- Checkbox for seat A4 -->
+<input type="checkbox" id="seat4" name="selectedSeats" value="A4" class="seat-checkbox">
+<label for="seat4" class="seat-label">A4</label>
+
+<!-- Checkbox for seat A5 -->
+<input type="checkbox" id="seat5" name="selectedSeats" value="A5" class="seat-checkbox">
+<label for "seat5" class="seat-label">A5</label>
+
+<!-- Checkbox for seat A6 -->
+<input type="checkbox" id="seat6" name="selectedSeats" value="A6" class="seat-checkbox">
+<label for="seat6" class="seat-label">A6</label>
+
+<!-- Checkbox for seat A7 -->
+<input type="checkbox" id="seat7" name="selectedSeats" value="A7" class="seat-checkbox">
+<label for="seat7" class="seat-label">A7</label>
+
+<!-- Checkbox for seat A8 -->
+<input type="checkbox" id="seat8" name="selectedSeats" value="A8" class="seat-checkbox">
+<label for="seat8" class="seat-label">A8</label>
+
+<!-- Checkbox for seat A9 -->
+<input type="checkbox" id="seat9" name="selectedSeats" value="A9" class="seat-checkbox">
+<label for="seat9" class="seat-label">A9</label>
+
+<!-- Checkbox for seat A10 -->
+<input type="checkbox" id="seat10" name="selectedSeats" value="A10" class="seat-checkbox">
+<label for="seat10" class="seat-label">A10</label>
+
+
+<!-- Checkbox for seat A11 -->
+<input type="checkbox" id="seat11" name="selectedSeats" value="A11" class="seat-checkbox">
+<label for="seat11" class="seat-label">A11</label>
+
+<!-- Checkbox for seat A12 -->
+<input type="checkbox" id="seat12" name="selectedSeats" value="A12" class="seat-checkbox">
+<label for="seat12" class="seat-label">A12</label>
+
+<!-- Checkbox for seat A13 -->
+<input type="checkbox" id="seat13" name="selectedSeats" value="A13" class="seat-checkbox">
+<label for="seat13" class="seat-label">A13</label>
+
+<!-- Checkbox for seat A14 -->
+<input type="checkbox" id="seat14" name="selectedSeats" value="A14" class="seat-checkbox">
+<label for="seat14" class="seat-label">A14</label>
+
+<!-- Checkbox for seat A15 -->
+<input type="checkbox" id="seat15" name="selectedSeats" value="A15" class="seat-checkbox">
+<label for="seat15" class="seat-label">A15</label>
+
+<!-- Checkbox for seat A16 -->
+<input type="checkbox" id="seat16" name="selectedSeats" value="A16" class="seat-checkbox">
+<label for="seat16" class="seat-label">A16</label>
+                                                    
+ <!-- Add more checkboxes and labels for each seat -->
+  </div>
+                        
+                        
+                        
+                        
+                        <div class="seat-row">
+                            <!-- <input type="checkbox" id="seatB1" class="seat-checkbox">
+                            <label for="seatB1" class="seat-label">B1</label> -->
+                            
+        <!-- Checkbox for seat B2 -->
+<input type="checkbox" id="seatB2" name="selectedSeats" value="B2" class="seat-checkbox">
+<label for="seatB2" class="seat-label">B2</label>
+
+<!-- Checkbox for seat B3 -->
+<input type="checkbox" id="seatB3" name="selectedSeats" value="B3" class="seat-checkbox">
+<label for="seatB3" class="seat-label">B3</label>
+
+<!-- Checkbox for seat B4 -->
+<input type="checkbox" id="seatB4" name="selectedSeats" value="B4" class="seat-checkbox">
+<label for="seatB4" class="seat-label">B4</label>
+
+<!-- Checkbox for seat B5 -->
+<input type="checkbox" id="seatB5" name="selectedSeats" value="B5" class "seat-checkbox">
+<label for="seatB5" class="seat-label">B5</label>
+
+<!-- Checkbox for seat B6 -->
+<input type="checkbox" id="seatB6" name="selectedSeats" value="B6" class="seat-checkbox">
+<label for="seatB6" class="seat-label">B6</label>
+
+<!-- Checkbox for seat B7 -->
+<input type="checkbox" id="seatB7" name="selectedSeats" value="B7" class="seat-checkbox">
+<label for="seatB7" class="seat-label">B7</label>
+
+<!-- Checkbox for seat B8 -->
+<input type="checkbox" id="seatB8" name="selectedSeats" value="B8" class="seat-checkbox">
+<label for="seatB8" class="seat-label">B8</label>
+
+<!-- Checkbox for seat B9 -->
+<input type="checkbox" id="seatB9" name="selectedSeats" value="B9" class="seat-checkbox">
+<label for="seatB9" class="seat-label">B9</label>
+
+<!-- Checkbox for seat B10 -->
+<input type="checkbox" id="seatB10" name="selectedSeats" value="B10" class="seat-checkbox">
+<label for="seatB10" class="seat-label">B10</label>
+
+<!-- Checkbox for seat B11 -->
+<input type="checkbox" id="seatB11" name="selectedSeats" value="B11" class="seat-checkbox">
+<label for="seatB11" class="seat-label">B11</label>
+
+<!-- Checkbox for seat B12 -->
+<input type="checkbox" id="seatB12" name="selectedSeats" value="B12" class="seat-checkbox">
+<label for="seatB12" class="seat-label">B12</label>
+
+<!-- Checkbox for seat B13 -->
+<input type="checkbox" id="seatB13" name="selectedSeats" value="B13" class="seat-checkbox">
+<label for="seatB13" class="seat-label">B13</label>
+
+<!-- Checkbox for seat B14 -->
+<input type="checkbox" id="seatB14" name="selectedSeats" value="B14" class="seat-checkbox">
+<label for="seatB14" class="seat-label">B14</label>
+
+<!-- Checkbox for seat B15 -->
+<input type="checkbox" id="seatB15" name="selectedSeats" value="B15" class="seat-checkbox">
+<label for="seatB15" class="seat-label">B15</label>
+
+<!-- Checkbox for seat B16 -->
+<input type="checkbox" id="seatB16" name="selectedSeats" value="B16" class="seat-checkbox">
+<label for="seatB16" class="seat-label">B16</label>
+
+                            
+                        </div>
+                        
+                        
+                        <div class="seat-row">
+                            <!-- <input type="checkbox" id="seatC1" class="seat-checkbox">
+                            <label for="seatC1" class="seat-label">C1</label>
+                            
+                            <input type="checkbox" id="seatC2" class="seat-checkbox">
+                            <label for="seatC2" class="seat-label">C2</label> -->
+                            
+
+
+<!-- Checkbox for seat C3 -->
+<input type="checkbox" id="seatC3" name="selectedSeats" value="C3" class="seat-checkbox">
+<label for "seatC3" class="seat-label">C3</label>
+
+<!-- Checkbox for seat C4 -->
+<input type="checkbox" id="seatC4" name="selectedSeats" value="C4" class="seat-checkbox">
+<label for="seatC4" class="seat-label">C4</label>
+
+<!-- Checkbox for seat C5 -->
+<input type="checkbox" id="seatC5" name="selectedSeats" value="C5" class="seat-checkbox">
+<label for="seatC5" class="seat-label">C5</label>
+
+<!-- Checkbox for seat C6 -->
+<input type="checkbox" id="seatC6" name="selectedSeats" value="C6" class="seat-checkbox">
+<label for="seatC6" class="seat-label">C6</label>
+
+<!-- Checkbox for seat C7 -->
+<input type="checkbox" id="seatC7" name="selectedSeats" value="C7" class="seat-checkbox">
+<label for="seatC7" class="seat-label">C7</label>
+
+<!-- Checkbox for seat C8 -->
+<input type="checkbox" id="seatC8" name="selectedSeats" value="C8" class="seat-checkbox">
+<label for="seatC8" class="seat-label">C8</label>
+
+<!-- Checkbox for seat C9 -->
+<input type="checkbox" id="seatC9" name="selectedSeats" value="C9" class="seat-checkbox">
+<label for="seatC9" class="seat-label">C9</label>
+
+<!-- Checkbox for seat C10 -->
+<input type="checkbox" id="seatC10" name="selectedSeats" value="C10" class="seat-checkbox">
+<label for="seatC10" class="seat-label">C10</label>
+
+<!-- Checkbox for seat C11 -->
+<input type="checkbox" id="seatC11" name="selectedSeats" value="C11" class="seat-checkbox">
+<label for="seatC11" class="seat-label">C11</label>
+
+<!-- Checkbox for seat C12 -->
+<input type="checkbox" id="seatC12" name="selectedSeats" value="C12" class="seat-checkbox">
+<label for="seatC12" class="seat-label">C12</label>
+
+<!-- Checkbox for seat C13 -->
+<input type="checkbox" id="seatC13" name="selectedSeats" value="C13" class="seat-checkbox">
+<label for="seatC13" class="seat-label">C13</label>
+
+<!-- Checkbox for seat C14 -->
+<input type="checkbox" id="seatC14" name="selectedSeats" value="C14" class="seat-checkbox">
+<label for="seatC14" class="seat-label">C14</label>
+
+<!-- Checkbox for seat C15 -->
+<input type="checkbox" id="seatC15" name="selectedSeats" value="C15" class="seat-checkbox">
+<label for="seatC15" class="seat-label">C15</label>
+
+<!-- Checkbox for seat C16 -->
+<input type="checkbox" id="seatC16" name="selectedSeats" value="C16" class="seat-checkbox">
+<label for="seatC16" class="seat-label">C16</label>
+
+                            
+                        </div>
+
+                        <div class="seat-row">
+                            <!-- <input type="checkbox" id="seatD1" class="seat-checkbox">
+                            <label for="seatD1" class="seat-label">D1</label>
+                            
+                            <input type="checkbox" id="seatD2" class="seat-checkbox">
+                            <label for="seatD2" class="seat-label">D2</label>
+                            
+                            <input type="checkbox" id="seatD3" class="seat-checkbox">
+                            <label for="seatD3" class="seat-label">D3</label>
+                            
+                            <input type="checkbox" id="seatD4" class="seat-checkbox">
+                            <label for="seatD4" class="seat-label">D4</label> -->
+                            
+                           <!-- Checkbox for seat D2 -->
+                           <!--
+<input type="checkbox" id="seatD2" name="selectedSeats" value="D2" class="seat-checkbox">
+<label for="seatD2" class="seat-label">D2</label>
+
+ Checkbox for seat D3 
+<input type="checkbox" id="seatD3" name="selectedSeats" value="D3" class="seat-checkbox">
+<label for="seatD3" class="seat-label">D3</label>
+
+ Continue this structure for seats D4 to D16 
+ Checkbox for seat D4 
+<input type="checkbox" id="seatD4" name="selectedSeats" value="D4" class="seat-checkbox">
+<label for="seatD4" class="seat-label">D4</label>
+-->
+<!-- Checkbox for seat D5 -->
+<input type="checkbox" id="seatD5" name="selectedSeats" value="D5" class="seat-checkbox">
+<label for="seatD5" class="seat-label">D5</label>
+
+<!-- Checkbox for seat D6 -->
+<input type="checkbox" id="seatD6" name="selectedSeats" value="D6" class="seat-checkbox">
+<label for="seatD6" class="seat-label">D6</label>
+
+<!-- Checkbox for seat D7 -->
+<input type="checkbox" id="seatD7" name="selectedSeats" value="D7" class="seat-checkbox">
+<label for="seatD7" class="seat-label">D7</label>
+
+<!-- Checkbox for seat D8 -->
+<input type="checkbox" id="seatD8" name="selectedSeats" value="D8" class="seat-checkbox">
+<label for="seatD8" class="seat-label">D8</label>
+
+<!-- Checkbox for seat D9 -->
+<input type="checkbox" id="seatD9" name="selectedSeats" value="D9" class="seat-checkbox">
+<label for="seatD9" class="seat-label">D9</label>
+
+<!-- Checkbox for seat D10 -->
+<input type="checkbox" id="seatD10" name="selectedSeats" value="D10" class="seat-checkbox">
+<label for="seatD10" class="seat-label">D10</label>
+
+<!-- Checkbox for seat D11 -->
+<input type="checkbox" id="seatD11" name="selectedSeats" value="D11" class="seat-checkbox">
+<label for="seatD11" class="seat-label">D11</label>
+
+<!-- Checkbox for seat D12 -->
+<input type="checkbox" id="seatD12" name="selectedSeats" value="D12" class="seat-checkbox">
+<label for="seatD12" class="seat-label">D12</label>
+
+<!-- Checkbox for seat D13 -->
+<input type="checkbox" id="seatD13" name="selectedSeats" value="D13" class="seat-checkbox">
+<label for="seatD13" class="seat-label">D13</label>
+
+<!-- Checkbox for seat D14 -->
+<input type="checkbox" id="seatD14" name="selectedSeats" value="D14" class="seat-checkbox">
+<label for="seatD14" class="seat-label">D14</label>
+
+<!-- Checkbox for seat D15 -->
+<input type="checkbox" id="seatD15" name="selectedSeats" value="D15" class="seat-checkbox">
+<label for="seatD15" class="seat-label">D15</label>
+
+<!-- Checkbox for seat D16 -->
+<input type="checkbox" id="seatD16" name="selectedSeats" value="D16" class="seat-checkbox">
+<label for="seatD16" class="seat-label">D16</label>
+
+                           
+                           
+                        </div>
+                        
+                        <div class="seat-row">
+                            <!-- Repeat the pattern for seats E, F, and G -->
+                        </div>
+                        
+                        
+
+                        <div class="seat-row">
+                        <!-- Repeat for more rows -->
+                        </div>
+
+                        <div class="theater-layout">
+                            <div class="theater-screen">Screen</div> <!-- Add a div for the screen -->
+                        </div>
+
+
+                    </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <!-- Booking summary and payment form (simplified) -->
+               
+               <h2>Booking Summary</h2>
+                <div class="total-price">
+        			Total Price: Rs. <span id="price">0</span>
+        			<input type="hidden" th:name="price" id="hidden-price" value="0">
+    			</div>
+              <!--  <h2>Payment Details</h2>-->
+                
+              <!-- <div class="form-group">
+                        	<label for="card-number">Card Number</label>
+                        <input type="text" class="form-control" id="card-number" name="card-number">
+                    </div>-->
+                    <button type="submit" class="btn btn-primary">Pay Now</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+	
+
+   
+    
+
+
+    <!-- Link to Bootstrap JavaScript -->
+    <script th:src="@{https://code.jquery.com/jquery-3.5.1.slim.min.js}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js}"></script>
+    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+    <!-- Link to custom JavaScript for seat selection -->
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
+
+
+

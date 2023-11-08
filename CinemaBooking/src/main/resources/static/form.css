@@ -1,0 +1,45 @@
+
+
+.exisiting-user a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+a img{
+    margin:10% 47%;
+}
+
+
+.error{
+    color: #FF0000;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #FFE4E1;
+    padding: 10px;
+    border: 1px solid #FF0000;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.existing-user{
+	
+	text-align: center;
+	font-weight: bold;
+}
+.anbtn{
+	 		
+            background-color: #0074D9; /* Background color (blue in this example) */
+            color: #FFFFFF; /* Text color (white in this example) */
+            padding: 10px 20px; /* Padding inside the button */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Display a hand cursor on hover */
+        }
+
+        /* Add a hover effect for the button */
+.anbtn:hover {
+            background-color: #0056b3;
+            color:#FFFFFF;
+            text-decoration: none; /* Darker blue on hover */
+        }
+	
